@@ -5,9 +5,16 @@ include('class/admin_back.php');
 session_start();
 
 $adminid = $_SESSION['id'];
+$adminemail =  $_SESSION['email'];
 
 if ($adminid == NULL) {
     header('location: index.php');
+}
+
+if (isset($_GET['adminlogout'])) {
+    $adminobj = new AdminBack();
+    $adminobj->adminlogout();
+
 }
 
 
@@ -47,8 +54,7 @@ if ($adminid == NULL) {
                                 <div class="page-wrapper">
 
                                     <div class="page-body">
-                                      <div class="row">
-
+                                  
                                        <?php
 
                                         if ($views) {
@@ -81,7 +87,7 @@ if ($adminid == NULL) {
 
                                     </div>
                                 </div>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>
