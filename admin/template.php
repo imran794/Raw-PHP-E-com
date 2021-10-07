@@ -68,13 +68,16 @@ if (isset($_GET['adminlogout'])) {
                                             include('views/add_product_view.php');
                                           }
                                            elseif($views == 'managecategory') {
-                                            include('views/manage_product_view.php');
+                                            include('views/manage_category_view.php');
                                           } 
                                           elseif($views == 'manageproduct') {
                                             include('views/manage_product_view.php');
                                           }  
                                           elseif($views == 'manageuser') {
                                             include('views/manage_user_view.php');
+                                          }
+                                           elseif($views == 'editcategory') {
+                                            include('views/edit_category_view.php');
                                           }
                                         }
 

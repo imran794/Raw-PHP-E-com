@@ -12,10 +12,10 @@ if (isset($_POST['cat_btn'])) {
 
 
 
-<div class="card-header">
-    <h3 class="text-center font-weight-light my-4">Add Category</h3>
-</div>
-
+   <h2 style="margin-bottom: 30px;">Add Category</h2>
+          <?php if (isset($msg)) {
+     echo $msg;
+        } ?>
 
 <div class="card-body">
     <form action="" method="POST">
@@ -38,9 +38,7 @@ if (isset($_POST['cat_btn'])) {
 
         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
             <input type="submit" name="cat_btn" value="Add Category" class="btn btn-primary">
-             <?php if (isset($msg)) {
-     echo $msg;
- } ?>
+      
         </div>
     </form>
 </div>
