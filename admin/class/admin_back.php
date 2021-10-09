@@ -87,6 +87,16 @@ class AdminBack{
 	 	}
 	 }
 
+     function P_DispalyCategory()
+	 {
+	 	$query = "SELECT * FROM category WHERE cat_status=1";
+
+	 	if (mysqli_query($this->conn, $query)) {
+	 		$allcategory = mysqli_query($this->conn, $query);
+	 		return $allcategory;
+	 	}
+	 }
+
 
 	 function DeactiveCategory($id)
 	 {
@@ -168,6 +178,27 @@ class AdminBack{
 	 	}
 	 	else{
 	 		 $msg = "Your File Must be a Png Or JPG Or JPEG";
+	 	}
+	 }
+
+
+	 function Category_to_product($id)
+	 {
+	 	 $query = "SELECT * FROM  product_info_category WHERE cat_id='$id'";
+
+	 	 if (mysqli_query($this->conn, $query)) {
+	 	 	 $catproduct = mysqli_query($this->conn, $query);
+	 	 	 return $catproduct;
+	 	 }
+	 }
+
+	 function product_by_id($id)
+	 {
+	 	$query = "SELECT * FROM product_info_category WHERE Pro_id='$id'";
+
+	 	if (mysqli_query($this->conn, $query)) {
+	 		$dataproduct = mysqli_query($this->conn, $query);
+	 		return $dataproduct;
 	 	}
 	 }
 

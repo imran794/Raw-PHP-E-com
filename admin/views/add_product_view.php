@@ -3,7 +3,7 @@
 
  $adminobj = new AdminBack();
 
- $categoies = $adminobj->DispalyCategory();
+ $categoies = $adminobj->P_DispalyCategory();
 
  if (isset($_POST['pro_btn'])) {
  	$msg = $adminobj->AddProduct($_POST);
