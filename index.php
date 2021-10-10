@@ -13,6 +13,7 @@ while ($ctg=mysqli_fetch_assoc($data)) {
     $ctgdatas[] = $ctg;
 }
 
+$manageproduct = $obj->ManageProduct();
 
 ?>
 

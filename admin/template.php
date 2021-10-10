@@ -79,6 +79,9 @@ if (isset($_GET['adminlogout'])) {
                                            elseif($views == 'editcategory') {
                                             include('views/edit_category_view.php');
                                           }
+                                            elseif($views == 'editproduct') {
+                                            include('views/edit_product_view.php');
+                                          }
                                         }
 
                                        ?>
