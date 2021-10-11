@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 include_once('admin/class/admin_back.php');
 
 $obj = new AdminBack();
@@ -83,7 +83,8 @@ if (isset($_GET['status'])) {
             <!-- Main content -->
             <div id="main-content" class="main-content">
                 <?php foreach($pros as $pro){ ?>
-                <div>
+                <form action="addTocart.php" method="POST">
+                       <div>
                     <!-- summary info -->
                     <div class="sumary-product single-layout">
                         <div class="media">
@@ -112,42 +113,16 @@ if (isset($_GET['status'])) {
                             </div>
                         </div>
                         <div class="action-form">
-                            <div class="quantity-box">
-                                <form action="" method="POST">
-                                    <span class="title">Quantity:
-                                        <?php if(isset($_POST['qty_btn'])) {
-                                         $qty = $_POST['quantity'];
-                                         echo $qty;
-                                    }else{
-                                        echo 1;
-                                    } ?>
-
-                                    </span>
-                                    <input class="form-control" type="number" name="quantity"> <br>
-                                    <input class="btn btn-success" type="submit" value="Update Total" name="qty_btn">
-                                </form>
-                            </div>
                             <div class="total-price-contain">
-                                <span class="title">Total Price:</span>
-                                <p class="price"><?php 
-                                if (isset($_POST['qty_btn'])) {
-                                    $qty = $_POST['quantity'];
-                                    if (empty($qty)) {
-                                        echo 'Quantity Should Not Be Empty!';
-                                    }
-                                    else{
-                                        echo '£'.$pro['pro_price'] * $qty;
-                                    }
-                                  
-                                }else{
-                                   echo $pro['pro_price']; 
-                                }
-
-                                 ?>
+                                <span class="title">Product Price:</span>
+                                <p class="price"><?php  echo '£'. $pro['pro_price'];  ?>
                                 </p>
                             </div>
                             <div class="buttons">
-                                <a href="#" class="btn add-to-cart-btn">add to cart</a>
+                                <input type="hidden" name="pdt_name" value="<?php echo $pro['pro_name']; ?>">
+                                <input type="hidden" name="pdt_price" value="<?php echo $pro['pro_price']; ?>">
+                                <input type="hidden" name="pdt_img" value="<?php echo $pro['pro_img']; ?>">
+                                <input type="submit" value="Add To Cart" name="addcat_btn" class="btn add-to-cart-btn btn-block">
                                 <p class="pull-row">
                                     <a href="#" class="btn wishlist-btn">wishlist</a>
                                     <a href="#" class="btn compare-btn">compare</a>
@@ -183,6 +158,7 @@ if (isset($_GET['status'])) {
                         </div>
                     </div>
                 </div>
+                </form>
                 <?php } ?>
                 <!-- Tab info -->
                 <div class="product-tabs single-layout biolife-tab-contain">

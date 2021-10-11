@@ -15,6 +15,11 @@ while ($ctg=mysqli_fetch_assoc($data)) {
 
 if (isset($_GET['status'])) {
     $getID = $_GET['id'];
+    $categoryname = $obj->catname($getID);
+}
+
+if (isset($_GET['status'])) {
+    $getID = $_GET['id'];
     $catinfo = $obj->Category_to_product($getID);
 
 
@@ -48,9 +53,7 @@ if (isset($_GET['status'])) {
     <!--Hero Section-->
     <div class="hero-section hero-background">
         <h1 class="page-title">
-            <?php foreach($catwproducts as $cat) {
-                 echo $cat['cat_name'];
-           } ?>
+            <?php echo $categoryname['cat_name'];  ?>
         </h1>
     </div>
 
@@ -59,9 +62,9 @@ if (isset($_GET['status'])) {
         <nav class="biolife-nav">
             <ul>
                 <li class="nav-item"><a href="index.php" class="permal-link">Home</a></li>
-                <?php foreach($catwproducts as $cat) { ?>
-                <li class="nav-item"><span class="current-page"><?php echo $cat['pro_name']; ?></span></li>
-                <?php } ?>
+                
+                <li class="nav-item"><span class="current-page"><?php echo $categoryname['cat_name'];  ?></span></li>
+               
             </ul>
         </nav>
     </div>

@@ -265,6 +265,19 @@ class AdminBack{
 	 	}
 	 }
 
+	  function catname($id)
+	 {
+	 	$query = "SELECT * FROM product_info_category WHERE cat_id=$id";
+	 	  if (mysqli_query($this->conn, $query)) {
+	 		$catnameid = mysqli_query($this->conn, $query);
+	 		$name = mysqli_fetch_assoc($catnameid);
+	 		return $name;
+	 	}
+
+	 }
+
+	 
+
 	 function Related_Products($id)
 	 {
 	 	$query = "SELECT * FROM product_info_category WHERE cat_id=$id ORDER BY Pro_id DESC LIMIT 2";
@@ -273,6 +286,8 @@ class AdminBack{
 	 		return $related_pro;
 	 	}
 	 }
+
+
 
 	 
 }
