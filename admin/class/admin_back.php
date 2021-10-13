@@ -287,6 +287,35 @@ class AdminBack{
 	 	}
 	 }
 
+	 function UserRegister($data)
+	 {
+	 	$name = $data['user_name'];
+	 	$Fname = $data['user_f_name'];
+	 	$Lname = $data['user_l_name'];
+	 	$email = $data['user_email'];
+	 	$password = md5($data['user_password']);
+	 	$number = $data['user_number'];
+	 	$role = $data['role'];
+
+	 	$get_regi_data = "SELECT * FROM user WHERE user_name='$name' or email='$email'";
+	 	$send_data = mysqli_query($this->conn, $get_regi_data);
+	 	$rows = mysqli_num_rows($send_data);
+	 	if ($rows == 1) {
+	 		$msg = 'This User Name or Email Alradey Exists!';
+	 	}
+	 	else{
+	 		$query = "INSERT INTO user(user_name,user_f_name,user_l_name,user_email,user_password,user_number,role) VALUE('$name','$Fname','$Lname','$email','$password',$number,$role)";
+
+	 	if (mysqli_query($this->conn, $query)) {
+	 		$msg = 'User Register Successfully!';
+	 		return $msg;
+	 	}
+
+	 	}
+
+	 	
+	 }
+
 
 
 	 
